@@ -15,7 +15,8 @@ def clean_city(df):
     df = df.copy()  # Make a copy to avoid modifying the original DataFrame
     df['city'] = df['city'].str.replace('-', ' ', regex=False)  # Replace hyphens with spaces
     df['city'] = df['city'].str.replace(r'^\s+|\s+$', '', regex=True)  # Remove leading/trailing whitespace
-    df['city'] = df['city'].str.replace(r'[^\w\s]', '', regex=True).lower  # Remove punctuation
+    df['city'] = df['city'].str.replace(r'[^\w\s]', '', regex=True)  # Remove punctuation
+    df['city'] = df['city'].str.lower()  # Convert to lowercase
     return df
 
 #Task 2: Map synonyms to canonical values
@@ -41,4 +42,3 @@ print(df_cleaned[['city', 'signup_time']])
 # TODO: Implement standardize_city(df)
 # TODO: Implement parse_and_localize(df)
 # TODO: Print cleaned columns for inspectio
-
