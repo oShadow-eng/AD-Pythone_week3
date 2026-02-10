@@ -10,7 +10,6 @@ Tasks:
 
 import pandas as pd
 import numpy as np
-import time
 data = pd.read_csv('day15_real_dataset_large.csv')
 df = pd.DataFrame(data)
 
@@ -65,25 +64,26 @@ def clean_city(df):
                                      'hou': 'Houston', 'dal': 'Dallas', 'atl': 'Atlanta', 'phi': 'Philadelphia', 'det': 'Detroit', 'min': 'Minneapolis',
                                      'tan': 'Tampa', 'orl': 'Orlando', 'cha': 'Charlotte', 'nas': 'Nashville', 'lv': 'Las Vegas', 'sac': 'Sacramento',
                                      'sa': 'San Antonio', 'kc': 'Kansas City', 'col': 'Columbus', 'ind': 'Indianapolis', 'sj': 'San Jose',
-                                     'jax': 'Jacksonville', 'fw': 'Fort Worth'})#for example, standardize common city abbreviations
-    df['city'] = df['city'].fillna('unknown')#for example, fill missing city values with 'unknown'
+                                     'jax': 'Jacksonville', 'fw': 'Fort Worth'}) #for example, standardize common city abbreviations
+    df['city'] = df['city'].fillna('unknown') #for example, fill missing city values with 'unknown'
     return df
 #Task 3: Run end-to-end and inspect
 def clean_data(df):
-    df = clean_types(df)# Placeholder for type cleaning function
-    df = validate_cleaned(df)# Placeholder for validation function
-    df = clean_missing(df)# Placeholder for missing value handling function
-    df = handle_outliers(df)# Placeholder for outlier handling function
-    df = clean_timestamp(df)# Placeholder for timestamp cleaning function
+    df = clean_types(df) # Placeholder for type cleaning function
+    df = validate_cleaned(df) # Placeholder for validation function
+    df = clean_missing(df) # Placeholder for missing value handling function
+    df = handle_outliers(df) # Placeholder for outlier handling function
+    df = clean_timestamp(df) # Placeholder for timestamp cleaning function
     df = clean_city(df)  # Placeholder for string/date cleaning function
     return df
 
 print("Before cleaning:")
 print(df)
 df_cleaned = clean_data(df)
-print("\nAfter cleaning:")  
+print("\nAfter cleaning:") 
 print(df_cleaned)
 
+df_cleaned.to_csv('day15_cleaned.csv', index=False)
 
 
 # TODO: Load data from data/day15_real_dataset.csv
